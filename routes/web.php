@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     dd('foo');
-});
+})->name('index');
 
 Route::resource('companies', CompanyController::class);

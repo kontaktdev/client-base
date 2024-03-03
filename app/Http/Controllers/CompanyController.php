@@ -37,15 +37,16 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        dd('ff');
     }
 
     /**
      * Show the form for editing the specified resource.
+     * @Request GET companies/{company_id}/edit
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -53,7 +54,23 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|string|max:100',
+            'vat' => 'nullable|string|max:50',
+            'address' => 'nullable|string|max:100',
+            'city' => 'nullable|string|max:50',
+            'zipcode' => 'nullable|string|max:15',
+            'country' => 'nullable|string|max:50',
+            'phone' => 'nullable|string|max:50',
+            'mobile' => 'nullable|string|max:50',
+            'email' => 'nullable|email|max:50',
+            'website' => 'nullable|url|max:100',
+            'description' => 'nullable|string',
+        ]);
+
+        $company->update($attributes);
+
+        return redirect()->route('companies.index')->with('success', 'Company details updated successfully!');
     }
 
     /**

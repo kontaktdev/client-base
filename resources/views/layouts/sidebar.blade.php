@@ -13,7 +13,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">APPLICATIONS</li>
                 <li class="nav-item">
-                    <a href="gallery.html" class="nav-link">
+                    <a href="{{route('companies.index')}}" class="nav-link">
                         <i class="nav-icon far fa-building"></i>
                         <p>Companies</p>
                     </a>

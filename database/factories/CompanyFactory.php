@@ -18,14 +18,25 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => fake()->company,
-            'email' => fake()->unique()->safeEmail,
-            'phone' => fake()->phoneNumber,
-            'website' => fake()->url,
+            'vat' => $this->vat(),
             'address' => fake()->address,
             'city' => fake()->city,
-            'state' => fake()->state,
             'zipcode' => fake()->postcode,
+            'country' => fake()->country,
+            'phone' => fake()->phoneNumber,
+            'mobile' => fake()->phoneNumber,
+            'email' => fake()->unique()->safeEmail,
+            'website' => fake()->url,
             'description' => fake()->paragraph
         ];
+    }
+
+    /**
+     * @return string
+     */
+    private function vat(): string {
+        $countryCode = fake()->countryCode;
+        $vatNumber = fake()->randomNumber(9);
+        return $countryCode . $vatNumber;
     }
 }
