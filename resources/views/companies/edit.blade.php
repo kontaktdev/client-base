@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card card-info">
+                <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Company Details</h3>
                     </div>
@@ -93,6 +93,7 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="{{route('companies.index')}}" class="btn">Cancel</a>
                         </div>
                     </form>
                 </div>

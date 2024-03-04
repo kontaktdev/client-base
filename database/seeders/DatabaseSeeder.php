@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Company;
+use App\Models\Employee;
 use App\Models\ResponsiblePerson;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Company::factory()->count(30)->create()->each(function($company){
-            ResponsiblePerson::factory(random_int(1, 3))->for($company)->create();
+            Employee::factory(random_int(1, 3))->for($company)->create();
         });
     }
 }

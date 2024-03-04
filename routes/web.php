@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,7 @@ Route::get('/', function () {
     dd('foo');
 })->name('index');
 
+Route::get('employees', [EmployeeController::class, 'all'])->name('employees.all');
+Route::resource('companies.employees', EmployeeController::class);
 Route::resource('companies', CompanyController::class);
+

@@ -26,7 +26,7 @@ class Company extends Model
 
     protected $table = 'companies';
 
-    public function responsiblePeople(): HasMany {
-        return $this->hasMany(ResponsiblePerson::class);
+    public function employees(): HasMany {
+        return $this->hasMany(Employee::class);
     }
 }

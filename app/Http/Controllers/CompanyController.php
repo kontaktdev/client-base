@@ -10,9 +10,21 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $companies = Company::all();
+        // Retrieve the simple search query from the request
+        $searchQuery = $request->input('simple_search');
+
+        if ($searchQuery) {
+            $companies = Company::where('name', 'like', '%' . $searchQuery . '%')
+                ->orWhere('vat', 'like', '%' . $searchQuery . '%')
+                ->orWhere('city', 'like', '%' . $searchQuery . '%')
+                ->orWhere('country', 'like', '%' . $searchQuery . '%')
+                ->paginate(10);
+        } else {
+            $companies = Company::withCount('employees')->paginate(10);
+        }
+        
         return view('companies.index', ['companies' => $companies]);
     }
 
@@ -37,7 +49,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        dd('ff');
+        return view('companies.show', compact('company'));
     }
 
     /**

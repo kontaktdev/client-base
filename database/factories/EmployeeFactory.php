@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ResponsiblePerson>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Employee>
  */
-class ResponsiblePersonFactory extends Factory
+class EmployeeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,11 @@ class ResponsiblePersonFactory extends Factory
     {
         return [
             'company_id' => null,
-            'name' => fake()->name,
+            'first_name' => fake()->firstName,
+            'last_name' => fake()->lastName,
             'position' => fake()->jobTitle,
             'phone' => fake()->phoneNumber,
+            'mobile' => fake()->phoneNumber,
             'email' => fake()->unique()->safeEmail
         ];
     }
